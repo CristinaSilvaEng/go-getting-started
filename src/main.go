@@ -1,99 +1,23 @@
 package main
 
-import "fmt"
-
-// constant block
-const (
-  first = 1 << (10 * iota)
-  second
-  third
+import (
+  "fmt"
 )
 
 func main() {
-  // int type
-  var response int
-  response = 42
-  println(response)
+  var plantCapacities []float64
 
-// float type
-  var dolar float32
-  dolar = 3.65
-  println(dolar)
+  plantCapacities = []float64{30, 30, 30, 60, 60, 100}
 
-// string type
-  goLang := "Go Language!"
-  println(goLang)
+  var capacity float64 = plantCapacities[0] + plantCapacities[1] +
+    plantCapacities[2] + plantCapacities[3] + plantCapacities[4] +
+    plantCapacities[5]
 
-// complex type
-  complexo := complex(2, 3)
-  println(complexo)
-  println(real(complexo))
-  println(imag(complexo))
+    var gridLoad = 75.
 
-// call constants
-  println(first)
-  println(second)
-  println(third)
+    utilization := gridLoad / capacity
 
-// array
-  arrray := [3]int{}
-  arrray[0] = 40
-  arrray[1] = 41
-  arrray[2] = 42
-  fmt.Println(arrray)
-
-// initialized array
-  arrrray := [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-  fmt.Println(arrrray)
-  fmt.Println(len(arrrray))
-
-// slice type
-  slicee := arrrray[1:7]
-  fmt.Println(slicee)
-
-  slicee = arrrray[:]
-  fmt.Println(slicee)
-
-// slice add value
-  slicee = append(slicee, 42)
-  fmt.Println(slicee)
-
-// slice initialized size
-  sliceee := make([]float32, 100)
-  sliceee[1] = 1.
-  sliceee[2] = 2.
-  sliceee[3] = 3.
-  fmt.Println(sliceee)
-  fmt.Println(len(sliceee))
-
-// map type
-  maap := make(map[int]string)
-  fmt.Println(maap)
-  maap[42] = "O universo, a vida e tudo mais..."
-  maap[0] = "Foo"
-  maap[1] = "Bar"
-
-  fmt.Println(maap)
-  fmt.Println(maap[99])
-
-// operators
-  add := 1 + 2
-  println(add)
-
-  subtract := 10 -5
-  println(subtract)
-
-  remainder := 5 % 2
-  println(remainder)
-
-  div := 5 / 2
-  println(div)
-
-  inc := 1
-  inc++
-  println(inc)
-  inc++
-  println(inc)
-  inc += -3
-  println(inc)
+    fmt.Printf("%-20s%.0f\n", "Capacity: ", capacity)
+    fmt.Printf("%-20s%.0f\n", "Load: ", gridLoad)
+    fmt.Printf("%-20s%.1f%%\n", "Utilization: ", utilization * 100)
 }
