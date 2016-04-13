@@ -1,45 +1,14 @@
 package main
 
 func main() {
-  if foo := 2; foo == 1 {
-    println("bar")
-  } else {
-    println("buz")
-  }
-
-  switch foo := 1; foo {
-  case 1:
-    println("one")
-  case 2:
-    println("two")
-  }
-
-  for index := 0; index < 5; index++ {
-    println(index)
-  }
-
-  i := 0
-  for {
-    i++
-    println(i)
-
-    if i > 5 {
-      break
+  addFunc := func(terms ...int) (numTerms int, sum int) {
+    for _, term := range terms {
+      sum += term
     }
+    numTerms = len(terms)
+    return
   }
 
-  s := []string{"foo", "bar", "buz"}
-  for idx, v := range s {
-    println(idx, v)
-  }
-
-  m := make(map[string]string)
-  m["first"] = "foo"
-  m["second"] = "second"
-  m["third"] = "buz"
-
-  for k, v := range m {
-    println(k, v)
-  }
-
+  numTerms, sum := addFunc(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+  println("Added:", numTerms, "terms for a total of", sum)
 }
