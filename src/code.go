@@ -1,14 +1,23 @@
 package main
 
 func main() {
-  addFunc := func(terms ...int) (numTerms int, sum int) {
-    for _, term := range terms {
-      sum += term
-    }
-    numTerms = len(terms)
-    return
-  }
+  foo := newMyStruct()
+  foo.myMap["bar"] = "buz"
 
-  numTerms, sum := addFunc(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
-  println("Added:", numTerms, "terms for a total of", sum)
+  foo.printValue("bar")
+}
+
+type myStruct struct {
+  myMap map[string]string
+}
+
+func newMyStruct() *myStruct {
+  result := myStruct{}
+  result.myMap = map[string]string{}
+
+  return &result
+}
+
+func (ms *myStruct) printValue(key string) {
+  println(ms.myMap[key])
 }

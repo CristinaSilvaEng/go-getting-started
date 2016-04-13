@@ -8,5 +8,5 @@ Pluralsight course avaliable in https://www.pluralsight.com/courses/go-getting-s
 - [x] Data Types and Operators
 - [x] Branching and Looping
 - [x] Functions
-- [ ] Object-oriented Programming
+- [x] Object-oriented Programming
 - [ ] Asynchronous Programming
