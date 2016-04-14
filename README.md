@@ -9,4 +9,4 @@ Pluralsight course avaliable in https://www.pluralsight.com/courses/go-getting-s
 - [x] Branching and Looping
 - [x] Functions
 - [x] Object-oriented Programming
-- [ ] Asynchronous Programming
+- [x] Asynchronous Programming

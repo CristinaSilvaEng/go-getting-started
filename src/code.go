@@ -1,23 +1,30 @@
 package main
 
+import "runtime"
+
 func main() {
-  foo := newMyStruct()
-  foo.myMap["bar"] = "buz"
+  runtime.GOMAXPROCS(8)
 
-  foo.printValue("bar")
+  ch := make(chan string)
+  doneCh := make(chan bool)
+
+  go abcGen(ch)
+  go printer(ch, doneCh)
+
+  <-doneCh
 }
 
-type myStruct struct {
-  myMap map[string]string
+func abcGen(ch chan string) {
+  for l := byte('a'); l <= byte('z'); l++ {
+    ch <- string(l)
+  }
+  close(ch)
 }
 
-func newMyStruct() *myStruct {
-  result := myStruct{}
-  result.myMap = map[string]string{}
+func printer(ch chan string, doneCh chan bool) {
+  for l := range ch {
+    println(l)
+  }
 
-  return &result
-}
-
-func (ms *myStruct) printValue(key string) {
-  println(ms.myMap[key])
+  doneCh <- true
 }
